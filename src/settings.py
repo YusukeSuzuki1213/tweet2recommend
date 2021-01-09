@@ -27,22 +27,24 @@ if TWITTER_ACCESS_SECRET is None:
 
 
 # TWITTER ACCOUNT
-USER_ID_1 = os.getenv('USER_ID_1', None)
-USER_ID_2 = os.getenv('USER_ID_2', None)
+# USER_ID_1 = os.getenv('USER_ID_1', None)
+# USER_ID_2 = os.getenv('USER_ID_2', None)
 USER_ID_TEST = os.getenv('USER_ID_TEST', None)
 
-if USER_ID_1 is None:
+""" if USER_ID_1 is None:
     print('Specify USER_ID_1 as environment variable.')
     os.sys.exit(1)
 
 if USER_ID_2 is None:
     print('Specify USER_ID_2 as environment variable.')
-    os.sys.exit(1)
+    os.sys.exit(1) """
 
 if USER_ID_TEST is None:
     print('Specify USER_ID_TEST as environment variable.')
     os.sys.exit(1)
 
 FOLLOWED_USER_LIST = [
-    USER_ID_1, USER_ID_2, USER_ID_TEST
+    # USER_ID_1,
+    # USER_ID_2,
+    USER_ID_TEST
 ]

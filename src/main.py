@@ -25,7 +25,8 @@ def get_auth() -> tweepy.OAuthHandler:
     return auth
 
 
-listener = MyStreamListener()
-auth = get_auth()
-stream = tweepy.Stream(auth=auth, listener=listener)
-stream.filter(follow=FOLLOWED_USER_LIST, is_async=True)
+if __name__ == '__main__':
+    listener = MyStreamListener()
+    auth = get_auth()
+    stream = tweepy.Stream(auth=auth, listener=listener)
+    stream.filter(follow=FOLLOWED_USER_LIST, is_async=True)

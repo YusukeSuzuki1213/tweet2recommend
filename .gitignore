@@ -2,3 +2,7 @@ dist/
 .#*
 .vscode/
 .venv/
+typings/
+.env
+.mypy_cache/
+src/__pycache__/

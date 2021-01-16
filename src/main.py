@@ -35,7 +35,11 @@ class TweepyApi:
 class MyStreamListener(tweepy.StreamListener):
     def on_status(self, status: Any):
         if(self.__should_reply(status)):
-            reply_text = "@{}\n{}".format(status.user.screen_name, "テスト")
+            key_text = self.__get_key_text(status.text)
+            reply_text = "@{}\n{}".format(
+                status.user.screen_name,
+                self.__get_reply_text(key_text)
+            )
             tweet_id = status.id_str
             self.__reply(reply_text, tweet_id)
 
@@ -53,8 +57,15 @@ class MyStreamListener(tweepy.StreamListener):
             hasattr(status, 'in_reply_to_status_id') and (status.in_reply_to_status_id is None) and
             hasattr(status, 'in_reply_to_status_id') and (status.in_reply_to_user_id is None) and
             hasattr(status, 'is_quote_status') and (status.is_quote_status is False) and
+            hasattr(status, 'text') and (status.text) and
             not hasattr(status, 'retweeted_status')
         ) else False
+
+    def __get_key_text(self, tweeted_text: str) -> str:
+        return tweeted_text
+
+    def __get_reply_text(self, key_text: str) -> str:
+        return f"{key_text}と呟きましたね？"
 
     def __reply(self, reply_text: str, tweet_id: str) -> None:
         if (tweepyApi := TweepyApi.get_instance()) is None:
